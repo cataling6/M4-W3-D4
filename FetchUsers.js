@@ -1,5 +1,4 @@
-export const FetchUsers = async (url) => {
-  //const url = "https://jsonplaceholder.typicode.com/users";
+export const fetchUsers = async (url) => {
   try {
     const response = await fetch(url);
 
@@ -12,15 +11,12 @@ export const FetchUsers = async (url) => {
   }
 };
 
-export const FilteredFetch = async (url, selectedInput, textedInput) => {
-  let res = [];
-  const filtered = await FetchUsers(url);
-
+export const filteredFetch = async (url, selectedInput, textedInput) => {
+  const filtered = await fetchUsers(url);
   //if select option = "Select option" => value = 0, I will return all rows, else filtered result
   if (selectedInput == 0) {
-    res = filtered;
+    return filtered;
   } else {
-    res = await filtered.filter((x) => x[selectedInput].toLowerCase().includes(textedInput));
+    return await filtered.filter((x) => x[selectedInput].toLowerCase().includes(textedInput));
   }
-  return res;
 };

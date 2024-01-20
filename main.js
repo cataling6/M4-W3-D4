@@ -1,29 +1,21 @@
-import { FetchUsers, FilteredFetch } from "./FetchUsers.js";
-import { createTable, tableHeader, tableReset, spinnerOnOff } from "./components.js";
+import { fetchUsers } from "./FetchUsers.js";
+import { createTable } from "./Components.js";
+import { selectInputListener, textInputListener } from "./EventListener.js";
 
-let filteredResult = [];
 export const url = "https://jsonplaceholder.typicode.com/users";
 
+const historicQuery = localStorage.getItem("query");
+const query = historicQuery ? historicQuery : "";
+const selectInput = document.getElementById("selectInput");
+const textInput = document.getElementById("textInput");
+
 document.addEventListener("DOMContentLoaded", async () => {
-  const selectInput = document.getElementById("selectInput");
-  let selectValue = "";
-  const textInput = document.getElementById("textInput");
-  let textValue = "";
-  const array = await FetchUsers(url);
+  textInput.value = query;
+
+  const array = await fetchUsers(url);
 
   createTable(array);
 
-  selectInput.addEventListener("change", () => {
-    selectValue = selectInput.value;
-  });
-
-  textInput.addEventListener("keyup", async () => {
-    textValue = textInput.value;
-    filteredResult = await FilteredFetch(url, selectValue, textValue);
-    tableReset();
-    spinnerOnOff();
-    setTimeout(async () => {
-      createTable(filteredResult);
-    }, 2000);
-  });
+  selectInput.addEventListener("change", selectInputListener);
+  textInput.addEventListener("keyup", textInputListener);
 });
