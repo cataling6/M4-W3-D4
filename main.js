@@ -1,6 +1,6 @@
-import { fetchUsers } from "/FetchUsers.js";
-import { createTable } from "/Components.js";
-import { selectInputListener, textInputListener } from "/EventListener.js";
+import { fetchUsers } from "./modules/FetchUsers";
+import { createTable } from "./modules/Components";
+import { selectInputListener, textInputListener } from "./modules/EventListener";
 
 export const url = "https://jsonplaceholder.typicode.com/users";
 

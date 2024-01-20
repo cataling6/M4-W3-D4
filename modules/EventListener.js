@@ -1,6 +1,6 @@
 import { filteredFetch } from "./FetchUsers.js";
 import { tableReset, spinnerOnOff, createTable } from "./Components.js";
-import { url } from "./main.js";
+import { url } from "../main.js";
 
 const historicQuery = localStorage.getItem("query");
 let query = historicQuery ? historicQuery : "";
