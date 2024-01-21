@@ -17,6 +17,9 @@ export const filteredFetch = async (url, selectedInput, textedInput) => {
   if (selectedInput == 0) {
     return filtered;
   } else {
-    return await filtered.filter((x) => x[selectedInput].toLowerCase().includes(textedInput));
+    return filtered.filter((x) => {
+      const value = x[selectedInput] ? x[selectedInput].toString().toLowerCase() : "";
+      return value.includes(textedInput.toLowerCase());
+    });
   }
 };

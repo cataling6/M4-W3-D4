@@ -41,8 +41,3 @@ export const spinnerOnOff = () => {
     spinnerOff();
   }, 2000);
 };
-
-// export const setLocalStorage = (key, value) => {
-//   const lsKey = key;
-//   const lsValue = value;
-// };

@@ -10,7 +10,7 @@ const selectInput = document.getElementById("selectInput");
 const textInput = document.getElementById("textInput");
 
 document.addEventListener("DOMContentLoaded", async () => {
-  textInput.value = query;
+  textInput.value = query.toLowerCase();
 
   const array = await fetchUsers(url);
 
